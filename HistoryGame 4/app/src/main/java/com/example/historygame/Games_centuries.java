@@ -5,12 +5,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 public class Games_centuries extends AppCompatActivity {
 
@@ -42,6 +51,30 @@ public class Games_centuries extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+//переход с кнопки на экран с игрой правда/ложь
+        TextView textView1=(TextView)findViewById(R.id.textViewG1);
+        textView1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Games_centuries.this,Game_true_false.class);
+                    startActivity(intent); finish();
+                }catch(Exception e) {
+                }
+            }
+        });
+
+        TextView textView2=(TextView)findViewById(R.id.textViewG2);
+        textView2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Games_centuries.this,Games_chron_order.class);
+                    startActivity(intent); finish();
+                }catch(Exception e) {
+                }
             }
         });
 

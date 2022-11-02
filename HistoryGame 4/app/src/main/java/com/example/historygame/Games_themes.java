@@ -62,7 +62,7 @@ public class Games_themes extends AppCompatActivity {
 
     }
 
-    //Апдейт кода: эта хуйня делает так, чтобы системной кнопкой назад было назад
+    //Апдейт кода: эта делает так, чтобы системной кнопкой назад было назад
     @Override
     public void onBackPressed(){
         try{
