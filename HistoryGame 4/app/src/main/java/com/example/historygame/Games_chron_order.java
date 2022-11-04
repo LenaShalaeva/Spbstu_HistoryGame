@@ -15,7 +15,6 @@ import java.util.Random;
 
 public class Games_chron_order extends AppCompatActivity {
 
-
     Array2 array = new Array2();//
     int N = array.check.length;
     Random random = new Random();
@@ -27,39 +26,31 @@ public class Games_chron_order extends AppCompatActivity {
     public int[] control = new int[4];
     public int[] controlD = new int[4];
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chron_order);
-
-
-
         final TextView txt1A = findViewById(R.id.textViewG1);
         final TextView txt2A = findViewById(R.id.textViewG2);
         final TextView txt3A = findViewById(R.id.textViewG3);
         final TextView txt4A = findViewById(R.id.textViewG4);
-
         TextView[] txt = new TextView[4];
-        txt[0]=txt1A;
-        txt[1]=txt2A;
-        txt[2]=txt3A;
-        txt[3]=txt4A;
-
+        txt[0] = txt1A;
+        txt[1] = txt2A;
+        txt[2] = txt3A;
+        txt[3] = txt4A;
         final TextView txt1D = findViewById(R.id.textViewD1);
         final TextView txt2D = findViewById(R.id.textViewD2);
         final TextView txt3D = findViewById(R.id.textViewD3);
         final TextView txt4D = findViewById(R.id.textViewD4);
-
         TextView[] txtD = new TextView[4];
-        txtD[0]=txt1D;
-        txtD[1]=txt2D;
-        txtD[2]=txt3D;
-        txtD[3]=txt4D;
+        txtD[0] = txt1D;
+        txtD[1] = txt2D;
+        txtD[2] = txt3D;
+        txtD[3] = txt4D;
 
-
-        //Knopka BACKKKKKK
         Button button_back = (Button) findViewById(R.id.button_back);
+
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,47 +62,40 @@ public class Games_chron_order extends AppCompatActivity {
                 }
             }
         });
-        //Zakochilsya apdeit knopki Nazad
 
         ArrayList<Integer> indices = new ArrayList<>();
         for (int i = 0; i < N; ++i) {
-            indices.add(i);}
-
-        for (int i=0; i<4; i++){
+            indices.add(i);
+        }
+        for (int i = 0; i < 4; i++) {
             int k = random.nextInt(indices.size());
-            number[i]=indices.get(k);
+            number[i] = indices.get(k);
             indices.remove(k);
             txt[i].setText(array.text[number[i]]);
-            control[i]=array.check[number[i]];
+            control[i] = array.check[number[i]];
         }
-
-
-
         items.add(number[0]);
         items.add(number[1]);
         items.add(number[2]);
         items.add(number[3]);
-
         ArrayList<Integer> indicesD = new ArrayList<>();
         for (int i = 0; i < 4; ++i) {
-            indicesD.add(i);}
-
-
+            indicesD.add(i);
+        }
         for (int i = 0; i < items.size(); ++i) {
             int k = random.nextInt(indicesD.size());
             numberD[i] = items.get(indicesD.get(k));
             indicesD.remove(k);
             txtD[i].setText(array.data[numberD[i]]);
-            controlD[i]=array.check[numberD[i]];
+            controlD[i] = array.check[numberD[i]];
         }
-
-
-        count=0;
-        clear=0;
-
-        for (int i = 0; i < 4; i++){
+        count = 0;
+        clear = 0;
+        for (int i = 0; i < 4; i++) {
             int finalI = i;
+
             txt[finalI].setOnTouchListener(new View.OnTouchListener() {
+
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
                     if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) { //строка обороботки ивента - касания кнопки
@@ -119,7 +103,7 @@ public class Games_chron_order extends AppCompatActivity {
                         txt[finalI].setBackgroundColor((getResources().getColor(R.color.teal_200)));
                     } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                         for (int j = 0; j < 4; j++) {
-                            int k=j;
+                            int k = j;
                             txtD[k].setOnTouchListener(new View.OnTouchListener() {
                                 @Override
                                 public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -129,7 +113,7 @@ public class Games_chron_order extends AppCompatActivity {
                                             txt[finalI].setBackgroundColor((getResources().getColor(R.color.green)));
                                             txtD[k].setBackgroundColor((getResources().getColor(R.color.green)));
                                             count = count + 1;
-                                            clear=clear+1;
+                                            clear = clear + 1;
                                         } else {
                                             txt[finalI].setBackgroundColor((getResources().getColor(R.color.red)));
                                             txtD[k].setBackgroundColor((getResources().getColor(R.color.red)));
@@ -145,29 +129,24 @@ public class Games_chron_order extends AppCompatActivity {
                                                 }
                                             }, 500);
                                         }
-                                        if (clear%4==0){
+                                        if (clear % 4 == 0) {
                                             final Handler handler = new Handler();
                                             handler.postDelayed(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    for (int s = 0; s<4; s++) {
+                                                    for (int s = 0; s < 4; s++) {
                                                         txt[s].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
                                                         txtD[s].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
                                                     }
                                                 }
                                             }, 200);
-
                                         }
-
                                     }
                                     return true;
-
                                 }
                             });
-
-
                         }
-                        count=0;
+                        count = 0;
                     }
                     return true;
                 }
@@ -175,17 +154,14 @@ public class Games_chron_order extends AppCompatActivity {
         }
     }
 
-
-
-
-    //Апдейт кода: эта хуйня делает так, чтобы системной кнопкой назад было назад
     @Override
-    public void onBackPressed(){
-        try{
-            Intent intent=new Intent(Games_chron_order.this,Games_centuries.class);
-            startActivity(intent); finish();
-        }catch(Exception e) {
+    public void onBackPressed() {
+        try {
+            Intent intent = new Intent(Games_chron_order.this, Games_centuries.class);
+            startActivity(intent);
+            finish();
+        } catch (Exception e) {
         }
     }
-    //Законичлся апдейт кода
+
 }

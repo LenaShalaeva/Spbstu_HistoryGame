@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
-
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -27,15 +26,15 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.theory:
-                        startActivity(new Intent(getApplicationContext(),Theory.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Theory.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.games:
@@ -45,28 +44,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView textView1=(TextView)findViewById(R.id.textViewG1);
-        textView1.setOnClickListener(new View.OnClickListener(){
+        TextView textView1 = (TextView) findViewById(R.id.textViewG1);
+
+        textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                    Intent intent=new Intent(MainActivity.this,Games_themes.class);
-                    startActivity(intent); finish();
-                }catch(Exception e) {
-                }
-            }
-        });
-        TextView textView2=(TextView)findViewById(R.id.textViewG2);
-        textView2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                try{
-                    Intent intent=new Intent(MainActivity.this,Games_centuries.class);
-                    startActivity(intent); finish();
-                }catch(Exception e) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, Games_themes.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
                 }
             }
         });
 
+        TextView textView2 = (TextView) findViewById(R.id.textViewG2);
+
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, Games_centuries.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                }
+            }
+        });
     }
 }
