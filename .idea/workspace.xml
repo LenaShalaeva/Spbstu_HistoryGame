@@ -4,24 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f618b419-8f07-4945-b0ec-bc18989ccca6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Array.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Array2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Game_true_false.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Games_chron_order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/res/layout/activity_chron_order.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/res/layout/activity_true_false.xml" afterDir="false" />
+    <list default="true" id="f618b419-8f07-4945-b0ec-bc18989ccca6" name="Changes" comment=":)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HistoryGame 4/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Games_centuries.java" beforeDir="false" afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Games_centuries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Games_themes.java" beforeDir="false" afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Games_themes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Games_chron_order.java" beforeDir="false" afterPath="$PROJECT_DIR$/HistoryGame 4/app/src/main/java/com/example/historygame/Games_chron_order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\helen\.android\avd\Pixel_3_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R58N80WFTQZ]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -38,7 +30,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/HistoryGame 4/app/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -115,6 +107,14 @@
       <workItem from="1666423748760" duration="28000" />
       <workItem from="1666423800542" duration="244000" />
     </task>
+    <task id="LOCAL-00001" summary=":)">
+      <created>1667388882220</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667388882221</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,5 +130,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=":)" />
+    <option name="LAST_COMMIT_MESSAGE" value=":)" />
   </component>
 </project>
