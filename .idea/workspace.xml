@@ -146,6 +146,21 @@
       <workItem from="1666423748760" duration="28000" />
       <workItem from="1666423800542" duration="244000" />
     </task>
+    <task id="LOCAL-00001" summary=":)">
+      <created>1667388882220</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667388882221</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fix bugs of Game of chronology and date and update code">
+      <created>1669279233432</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669279233433</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,5 +176,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=":)" />
+    <MESSAGE value="Fix bugs of Game of chronology and date and update code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bugs of Game of chronology and date and update code" />
   </component>
 </project>

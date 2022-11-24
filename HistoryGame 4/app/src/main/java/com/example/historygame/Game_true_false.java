@@ -34,6 +34,7 @@ public class Game_true_false extends AppCompatActivity {
         Button button_back = (Button) findViewById(R.id.button_back);
 
         button_back.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 try {
@@ -46,6 +47,7 @@ public class Game_true_false extends AppCompatActivity {
         });
 
         num = random.nextInt(12);//тут рнадомом генерируется число от 0 до 12 не включая, т.к. пока столько у меня есть в массиве
+
         txt.setText(array.text[num]);//тут извлекается текст по num
         control = array.check[num];//тут извлекается код правдивости по num
 
@@ -53,6 +55,7 @@ public class Game_true_false extends AppCompatActivity {
         truebutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+
 
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) { //строка обороботки ивента - касания кнопки
                     //Если коснулся кнопки
@@ -69,7 +72,9 @@ public class Game_true_false extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
+
                             num = random.nextInt(12); //заново рандомом выбирает число
+
                             txt.setText(array.text[num]); //вытаскивается текст для числа num из массива текстов
                             control = array.check[num]; //вытаскивается число правды (0 или 1) для события
                             falsebutton.setEnabled(true); //тут возвращается работоспособность другой кнопки
@@ -87,6 +92,7 @@ public class Game_true_false extends AppCompatActivity {
         falsebutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     //Если коснулся кнопки
                     truebutton.setEnabled(false);//блокирую другую кнопку, если нажата первая
@@ -98,13 +104,16 @@ public class Game_true_false extends AppCompatActivity {
                     }
 
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+
                     //Если отпустил кнопку
 
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
+
                             num = random.nextInt(12);
+
                             txt.setText(array.text[num]);
                             control = array.check[num];
                             truebutton.setEnabled(true);
@@ -115,6 +124,7 @@ public class Game_true_false extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     //Код системной кнопки назад -начало

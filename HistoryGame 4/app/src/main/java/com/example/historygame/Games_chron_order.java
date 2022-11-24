@@ -26,23 +26,28 @@ public class Games_chron_order extends AppCompatActivity {
     public int[] control = new int[4];
     public int[] controlD = new int[4];
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chron_order);
+
         final TextView txt1A = findViewById(R.id.textViewG1);
         final TextView txt2A = findViewById(R.id.textViewG2);
         final TextView txt3A = findViewById(R.id.textViewG3);
         final TextView txt4A = findViewById(R.id.textViewG4);
+
         TextView[] txt = new TextView[4];
         txt[0] = txt1A;
         txt[1] = txt2A;
         txt[2] = txt3A;
         txt[3] = txt4A;
+
         final TextView txt1D = findViewById(R.id.textViewD1);
         final TextView txt2D = findViewById(R.id.textViewD2);
         final TextView txt3D = findViewById(R.id.textViewD3);
         final TextView txt4D = findViewById(R.id.textViewD4);
+
         TextView[] txtD = new TextView[4];
         txtD[0] = txt1D;
         txtD[1] = txt2D;
