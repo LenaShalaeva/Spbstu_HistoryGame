@@ -53,7 +53,7 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:layout_marginRight="10dp"
-                android:text="Правда"
+                android:text="Верю"
                 android:textSize="18sp"
                 android:textAllCaps="false" />
 
@@ -63,15 +63,13 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:textSize="18sp"
-                android:text="Ложь"
+                android:text="Не Верю"
                 android:layout_marginRight="10dp"
                 android:textAllCaps="false" />
 
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 
 </RelativeLayout>

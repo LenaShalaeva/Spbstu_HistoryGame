@@ -20,9 +20,7 @@ import com.google.android.material.navigation.NavigationBarView;
 // ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
 public class Games_centuries extends AppCompatActivity {
-
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -36,15 +34,15 @@ public class Games_centuries extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.theory:
-                        startActivity(new Intent(getApplicationContext(),Theory.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Theory.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.games:
@@ -78,9 +76,35 @@ public class Games_centuries extends AppCompatActivity {
             }
         });
 
-        //Knopka BACKKKKKK
-        Button button_back=(Button)findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener(){
+//переход с кнопки на экран с игрой правда/ложь
+        TextView textView1 = (TextView) findViewById(R.id.textViewG1);
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(Games_centuries.this, Game_true_false.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                }
+            }
+        });
+
+        TextView textView2 = (TextView) findViewById(R.id.textViewG2);
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(Games_centuries.this, Games_chron_order.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                }
+            }
+        });
+
+        //Обработка нажатия кнопки назад
+        Button button_back = (Button) findViewById(R.id.button_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -91,18 +115,15 @@ public class Games_centuries extends AppCompatActivity {
                 }
             }
         });
-        //Zakochilsya apdeit knopki Nazad
-
     }
 
-    //Апдейт кода: эта хуйня делает так, чтобы системной кнопкой назад было назад
     @Override
-    public void onBackPressed(){
-        try{
-            Intent intent=new Intent(Games_centuries.this,MainActivity.class);
-            startActivity(intent); finish();
-        }catch(Exception e) {
+    public void onBackPressed() {
+        try {
+            Intent intent = new Intent(Games_centuries.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } catch (Exception e) {
         }
     }
-    //Законичлся апдейт кода
 }

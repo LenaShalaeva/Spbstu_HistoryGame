@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class Games_themes extends AppCompatActivity {
-
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -27,15 +26,15 @@ public class Games_themes extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.theory:
-                        startActivity(new Intent(getApplicationContext(),Theory.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Theory.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.games:
@@ -45,9 +44,8 @@ public class Games_themes extends AppCompatActivity {
             }
         });
 
-        //Knopka BACKKKKKK
-        Button button_back=(Button)findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener(){
+        Button button_back = (Button) findViewById(R.id.button_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -58,18 +56,14 @@ public class Games_themes extends AppCompatActivity {
                 }
             }
         });
-        //Zakochilsya apdeit knopki Nazad
-
     }
 
-    //Апдейт кода: эта делает так, чтобы системной кнопкой назад было назад
     @Override
-    public void onBackPressed(){
-        try{
-            Intent intent=new Intent(Games_themes.this,MainActivity.class);
-            startActivity(intent); finish();
-        }catch(Exception e) {
+    public void onBackPressed() {
+        try {
+            Intent intent = new Intent(Games_themes.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } catch (Exception e) {
         }
     }
-    //Законичлся апдейт кода
-}

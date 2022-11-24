@@ -24,23 +24,22 @@ public class Profile extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.profile:
                         return true;
 
                     case R.id.theory:
-                        startActivity(new Intent(getApplicationContext(),Theory.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Theory.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.games:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
             }
         });
-
     }
 }
