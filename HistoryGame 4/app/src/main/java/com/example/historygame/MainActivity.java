@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+//Попытка номер 5
+
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
