@@ -40,7 +40,8 @@ public class Games_chron_order extends AppCompatActivity {
     ArrayList<Integer> items = new ArrayList<>(); //массив для связи2 массивов: number и numberD
     public int[] control = new int[4]; //массив индексов события для контроля соответствия события и даты
     public int[] controlD = new int[4];//массив индексов даты для контроля соответствия события и даты
-    public int[] controlColor = new int[4]; //массив для контроля блокированности кнопок, когда отвтеили праивльно
+    public int[] controlColor = new int[4]; //массив для событий для контроля блокированности кнопок, когда отвтеили праивльно
+    public int[] controlColorD = new int[4]; //массив для дат для контроля блокированности кнопок, когда отвтеили праивльно
 
 
 
@@ -126,17 +127,16 @@ public class Games_chron_order extends AppCompatActivity {
         count=0;
         clear=0;//обнуляем счетчик для контроля праивльных ответов
 
-        for (int i = 0; i < 4; i++){controlColor[i]=0;}//обнуляем индексы контроля цвета, т.е. правильного ответа
+        for (int i = 0; i < 4; i++){controlColor[i]=0;controlColorD[i]=0;}//обнуляем массив контроля цвета, т.е. правильного ответа
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch(view.getId()){//Происходит тык на кнопку событий, т.к. кнопки дат заблокированы, и рассматриваем, какая из кнопок была нажата
                     case R.id.textViewG1://Если первая
-                        txtD[0].setEnabled(true);//Разрешаем тыкать кнопки дат
-                        txtD[1].setEnabled(true);
-                        txtD[2].setEnabled(true);
-                        txtD[3].setEnabled(true);
+                        for (int i = 0; i < 4; i++){//Разрешаем тыкать кнопки дат
+                            if (controlColorD[i]==0){txtD[i].setEnabled(true);}
+                        }
                         txt[1].setEnabled(false);//Запрещаем тыкать другие кнопки событий
                         txt[2].setEnabled(false);
                         txt[3].setEnabled(false);
@@ -155,7 +155,8 @@ public class Games_chron_order extends AppCompatActivity {
                                         if (control[0]==controlD[k]){//Если индекс контроля событий и индекс контроля даты равны, т.е. событие соотвествует дате
                                             txt[0].setBackgroundColor((getResources().getColor(R.color.green)));//Красим обе кнопки в зеелный
                                             txtD[k].setBackgroundColor((getResources().getColor(R.color.green)));
-                                            controlColor[0]=1;//Меняем индекс контроля правильных ответов для этой кнопки
+                                            controlColor[0]=1;//Меняем значение контроля правильных ответов для этой кнопки события
+                                            controlColorD[k]=1; //Меняем значение контроля правильных ответов для этой кнопки даты
                                             txt[0].setEnabled(false);//Блокируем эту кнопку, чтобы её больше не трогать, пока не обновим игру
                                             txtD[0].setEnabled(false);//Снова блокируем все кнопки дат, чтобы можно было дальше ыткнуть только кнопку событий
                                             txtD[1].setEnabled(false);
@@ -172,12 +173,12 @@ public class Games_chron_order extends AppCompatActivity {
                                                 txt[1].setEnabled(true);
                                                 txt[2].setEnabled(true);
                                                 txt[3].setEnabled(true);
-                                                for (int i = 0; i < 4; i++){controlColor[i]=0;}//Обнуляем индексы правильных ответов
+                                                for (int i = 0; i < 4; i++){controlColor[i]=0;controlColorD[i]=0;}//Обнуляем индексы правильных ответов
                                                 //А дальше тупо код до цикла
                                                 items = new ArrayList<>();
                                                 for (int i = 0; i < 4; ++i) {//А ну тут ещё цвет возвращаем
-                                                    txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
-                                                    txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                                    txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
+                                                    txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
 
                                                 ArrayList<Integer> indices = new ArrayList<>();
@@ -220,8 +221,8 @@ public class Games_chron_order extends AppCompatActivity {
                                             handler.postDelayed(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    txt1A.setBackgroundColor((getResources().getColor(R.color.yellow_500))); //тут возвращается цвет кнопки
-                                                    txtD[k].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                                    txt1A.setBackgroundColor((getResources().getColor(R.color.yellow_200_90))); //тут возвращается цвет кнопки
+                                                    txtD[k].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
                                             }, 500);
                                         }
@@ -235,10 +236,9 @@ public class Games_chron_order extends AppCompatActivity {
                         //Дальше для всех других 3 кнопок то же самое
                     case R.id.textViewG2:
                         txt2A.setBackgroundColor((getResources().getColor(R.color.teal_200)));
-                        txtD[0].setEnabled(true);
-                        txtD[1].setEnabled(true);
-                        txtD[2].setEnabled(true);
-                        txtD[3].setEnabled(true);
+                        for (int i = 0; i < 4; i++){//Разрешаем тыкать кнопки дат
+                            if (controlColorD[i]==0){txtD[i].setEnabled(true);}
+                        }
                         txt[0].setEnabled(false);
                         txt[2].setEnabled(false);
                         txt[3].setEnabled(false);
@@ -261,6 +261,7 @@ public class Games_chron_order extends AppCompatActivity {
                                             txtD[2].setEnabled(false);
                                             txtD[3].setEnabled(false);
                                             controlColor[1]=1;
+                                            controlColorD[k]=1;
                                             for (int i = 0; i < 4; i++){
                                                 if (controlColor[i]==0){txt[i].setEnabled(true);}
                                             }
@@ -270,11 +271,11 @@ public class Games_chron_order extends AppCompatActivity {
                                                 txt[1].setEnabled(true);
                                                 txt[2].setEnabled(true);
                                                 txt[3].setEnabled(true);
-                                                for (int i = 0; i < 4; i++){controlColor[i]=0;}
+                                                for (int i = 0; i < 4; i++){controlColor[i]=0;controlColorD[i]=0;}
                                                 items = new ArrayList<>();
                                                 for (int i = 0; i < 4; ++i) {
-                                                    txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
-                                                    txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                                    txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
+                                                    txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
 
                                                 ArrayList<Integer> indices = new ArrayList<>();
@@ -317,8 +318,8 @@ public class Games_chron_order extends AppCompatActivity {
                                             handler.postDelayed(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    txt2A.setBackgroundColor((getResources().getColor(R.color.yellow_500))); //тут возвращается цвет кнопки
-                                                    txtD[k].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                                    txt2A.setBackgroundColor((getResources().getColor(R.color.yellow_200_90))); //тут возвращается цвет кнопки
+                                                    txtD[k].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
                                             }, 500);
                                         }
@@ -332,10 +333,9 @@ public class Games_chron_order extends AppCompatActivity {
                         break;
                     case R.id.textViewG3:
                         txt3A.setBackgroundColor((getResources().getColor(R.color.teal_200)));
-                        txtD[0].setEnabled(true);
-                        txtD[1].setEnabled(true);
-                        txtD[2].setEnabled(true);
-                        txtD[3].setEnabled(true);
+                        for (int i = 0; i < 4; i++){//Разрешаем тыкать кнопки дат
+                            if (controlColorD[i]==0){txtD[i].setEnabled(true);}
+                        }
                         txt[0].setEnabled(false);
                         txt[1].setEnabled(false);
                         txt[3].setEnabled(false);
@@ -359,6 +359,7 @@ public class Games_chron_order extends AppCompatActivity {
                                             txtD[2].setEnabled(false);
                                             txtD[3].setEnabled(false);
                                             controlColor[2]=1;
+                                            controlColorD[k]=1;
                                             for (int i = 0; i < 4; i++){
                                                 if (controlColor[i]==0){txt[i].setEnabled(true);}
                                             }
@@ -368,11 +369,11 @@ public class Games_chron_order extends AppCompatActivity {
                                                 txt[1].setEnabled(true);
                                                 txt[2].setEnabled(true);
                                                 txt[3].setEnabled(true);
-                                                for (int i = 0; i < 4; i++){controlColor[i]=0;}
+                                                for (int i = 0; i < 4; i++){controlColor[i]=0;controlColorD[i]=0;}
                                                 items = new ArrayList<>();
                                                 for (int i = 0; i < 4; ++i) {
-                                                    txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
-                                                    txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                                    txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
+                                                    txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
 
                                                 ArrayList<Integer> indices = new ArrayList<>();
@@ -415,8 +416,8 @@ public class Games_chron_order extends AppCompatActivity {
                                             handler.postDelayed(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    txt3A.setBackgroundColor((getResources().getColor(R.color.yellow_500))); //тут возвращается цвет кнопки
-                                                    txtD[k].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                                    txt3A.setBackgroundColor((getResources().getColor(R.color.yellow_200_90))); //тут возвращается цвет кнопки
+                                                    txtD[k].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
                                             }, 500);
                                         }
@@ -429,10 +430,9 @@ public class Games_chron_order extends AppCompatActivity {
                         break;
                     case R.id.textViewG4:
                         txt4A.setBackgroundColor((getResources().getColor(R.color.teal_200)));
-                        txtD[0].setEnabled(true);
-                        txtD[1].setEnabled(true);
-                        txtD[2].setEnabled(true);
-                        txtD[3].setEnabled(true);
+                        for (int i = 0; i < 4; i++){//Разрешаем тыкать кнопки дат
+                            if (controlColorD[i]==0){txtD[i].setEnabled(true);}
+                        }
                         txt[0].setEnabled(false);
                         txt[1].setEnabled(false);
                         txt[2].setEnabled(false);
@@ -455,6 +455,7 @@ public class Games_chron_order extends AppCompatActivity {
                                             txtD[2].setEnabled(false);
                                             txtD[3].setEnabled(false);
                                             controlColor[3]=1;
+                                            controlColorD[k]=1;
                                             for (int i = 0; i < 4; i++){
                                                 if (controlColor[i]==0){txt[i].setEnabled(true);}
                                             }
@@ -464,11 +465,11 @@ public class Games_chron_order extends AppCompatActivity {
                                                 txt[1].setEnabled(true);
                                                 txt[2].setEnabled(true);
                                                 txt[3].setEnabled(true);
-                                                for (int i = 0; i < 4; i++){controlColor[i]=0;}
+                                                for (int i = 0; i < 4; i++){controlColor[i]=0;controlColorD[i]=0;}
                                                 items = new ArrayList<>();
                                                 for (int i = 0; i < 4; ++i) {
-                                                    txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
-                                                    txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                                    txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
+                                                    txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
 
                                                 ArrayList<Integer> indices = new ArrayList<>();
@@ -511,8 +512,8 @@ public class Games_chron_order extends AppCompatActivity {
                                             handler.postDelayed(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    txt4A.setBackgroundColor((getResources().getColor(R.color.yellow_500))); //тут возвращается цвет кнопки
-                                                    txtD[k].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                                    txt4A.setBackgroundColor((getResources().getColor(R.color.yellow_200_90))); //тут возвращается цвет кнопки
+                                                    txtD[k].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
                                             }, 500);
                                         }
@@ -539,8 +540,6 @@ public class Games_chron_order extends AppCompatActivity {
         }
 
     }
-
-
 
 
     //Тут код делает так, чтобы системной кнопкой назад было назад
