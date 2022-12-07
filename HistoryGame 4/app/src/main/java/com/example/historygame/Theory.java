@@ -31,10 +31,8 @@ public class Theory extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Profile.class));
                         overridePendingTransition(0, 0);
                         return true;
-
                     case R.id.theory:
                         return true;
-
                     case R.id.games:
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         overridePendingTransition(0, 0);
@@ -50,11 +48,57 @@ public class Theory extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Theory.this,Theory_Ancient.class);
-                    startActivity(intent); finish();
+                    intent.putExtra("header","Древний Казахстан");
+                    intent.putExtra("century","1");
+                    startActivity(intent);
                 }catch(Exception e) {
                 }
             }
         });
+
+        TextView textView2=(TextView)findViewById(R.id.textViewG2);
+        textView2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Theory.this,Theory_Ancient.class);
+                    intent.putExtra("header","Средний век");
+                    intent.putExtra("century","2");
+                    startActivity(intent);
+                }catch(Exception e) {
+                }
+            }
+        });
+
+        TextView textView3=(TextView)findViewById(R.id.textViewG3);
+        textView3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Theory.this,Theory_Ancient.class);
+                    intent.putExtra("header","Новое время");
+                    intent.putExtra("century","3");
+                    startActivity(intent);
+                }catch(Exception e) {
+                }
+            }
+        });
+
+        TextView textView4=(TextView)findViewById(R.id.textViewG4);
+        textView4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Theory.this,Theory_Ancient.class);
+                    intent.putExtra("header","Новейшее время");
+                    intent.putExtra("century","4");
+                    startActivity(intent);
+                }catch(Exception e) {
+                }
+            }
+        });
+
+
     }
 
 }
