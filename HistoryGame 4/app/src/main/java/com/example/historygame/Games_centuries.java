@@ -58,12 +58,25 @@ public class Games_centuries extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Games_centuries.this,Game_personalities.class);
+                    intent.putExtra("century","1");
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }
             }
         });
 
+        TextView textView2=(TextView)findViewById(R.id.textViewG2);
+        textView2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Games_centuries.this,Games_chron_order.class);
+                    intent.putExtra("century","1");
+                    startActivity(intent); finish();
+                }catch(Exception e) {
+                }
+            }
+        });
 
         //Обработка нажатия кнопки назад
         Button button_back = (Button) findViewById(R.id.button_back);

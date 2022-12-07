@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Games_themes extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    String selectedCentury = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,58 @@ public class Games_themes extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Games_themes.this, ChooseGame_Ancient.class);
+                    startActivity(intent); finish();
+                }catch(Exception e) {
+                }
+            }
+        });
+
+        TextView textView=(TextView)findViewById(R.id.textViewG1);
+        textView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Games_themes.this,Game_true_false.class);
+                    intent.putExtra("century","1");
+                    startActivity(intent); finish();
+                }catch(Exception e) {
+                }
+            }
+        });
+
+        TextView textView2=(TextView)findViewById(R.id.textViewG2);
+        textView2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Games_themes.this,Game_true_false.class);
+                    intent.putExtra("century","2");
+                    startActivity(intent); finish();
+                }catch(Exception e) {
+                }
+            }
+        });
+
+        TextView textView3=(TextView)findViewById(R.id.textViewG3);
+        textView3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Games_themes.this,Game_true_false.class);
+                    intent.putExtra("century","3");
+                    startActivity(intent); finish();
+                }catch(Exception e) {
+                }
+            }
+        });
+
+        TextView textView4=(TextView)findViewById(R.id.textViewG4);
+        textView4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent=new Intent(Games_themes.this,Game_true_false.class);
+                    intent.putExtra("century","4");
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }
