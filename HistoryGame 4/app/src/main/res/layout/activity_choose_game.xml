@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Назад"
+        android:textAllCaps="false" />
+
+    <LinearLayout
+        android:id="@+id/container1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/Line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textViewG1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/yellow_200_90"
+                android:gravity="center"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="20"
+                android:paddingLeft="10dp"
+                android:text="Правда/Ложь"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewG2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/yellow_200_90"
+                android:gravity="center"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="20"
+                android:paddingLeft="10dp"
+                android:text="Установите соответствие"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textViewG3"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/yellow_200_90"
+                android:gravity="center"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="20"
+                android:paddingLeft="10dp"
+                android:text="Расположите в хронологическом порядке"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_navigator"
+        app:backgroundTint="@color/yellow_200"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</RelativeLayout>

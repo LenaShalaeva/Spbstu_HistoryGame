@@ -82,7 +82,7 @@ public class Games_chron_order extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(Games_chron_order.this, Games_centuries.class);
+                    Intent intent = new Intent(Games_chron_order.this, ChooseGame_Ancient.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -546,7 +546,7 @@ public class Games_chron_order extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         try{
-            Intent intent=new Intent(Games_chron_order.this,Games_centuries.class);
+            Intent intent=new Intent(Games_chron_order.this,ChooseGame_Ancient.class);
             startActivity(intent); finish();
         }catch(Exception e) {
         }

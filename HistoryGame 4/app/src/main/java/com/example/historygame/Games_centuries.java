@@ -51,25 +51,13 @@ public class Games_centuries extends AppCompatActivity {
                 return false;
             }
         });
-//переход с кнопки на экран с игрой правда/ложь
+
         TextView textView1=(TextView)findViewById(R.id.textViewG1);
         textView1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 try{
-                    Intent intent=new Intent(Games_centuries.this,Game_true_false.class);
-                    startActivity(intent); finish();
-                }catch(Exception e) {
-                }
-            }
-        });
-
-        TextView textView2=(TextView)findViewById(R.id.textViewG2);
-        textView2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                try{
-                    Intent intent=new Intent(Games_centuries.this,Games_chron_order.class);
+                    Intent intent=new Intent(Games_centuries.this,Game_personalities.class);
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }

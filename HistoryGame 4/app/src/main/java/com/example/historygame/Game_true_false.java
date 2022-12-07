@@ -73,7 +73,7 @@ public class Game_true_false extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(Game_true_false.this, Games_centuries.class);
+                    Intent intent = new Intent(Game_true_false.this, ChooseGame_Ancient.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -162,7 +162,7 @@ public class Game_true_false extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         try {
-            Intent intent = new Intent(Game_true_false.this, Games_centuries.class);
+            Intent intent = new Intent(Game_true_false.this, ChooseGame_Ancient.class);
             startActivity(intent);
             finish();
         } catch (Exception e) {
