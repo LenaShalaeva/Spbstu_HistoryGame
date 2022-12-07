@@ -48,23 +48,22 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="0dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/container4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
 
                 <LinearLayout
                     android:id="@+id/line1"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -73,21 +72,21 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:background="@color/yellow_200_90"
-                        android:paddingLeft="10dp"
+                        android:padding="10dp"
                         android:text="1 событие"
                         android:layout_marginRight="10dp"
                         android:shadowColor="@color/black"
                         android:shadowDx="5"
                         android:shadowDy="5"
                         android:shadowRadius="20"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewD1"
                         android:layout_width="100dp"
-                        android:layout_height="120dp"
+                        android:layout_height="match_parent"
                         android:background="@color/yellow_200_90"
                         android:gravity="center"
                         android:paddingLeft="10dp"
@@ -95,7 +94,7 @@
                         android:shadowDx="5"
                         android:shadowDy="5"
                         android:shadowRadius="20"
-                        android:text="дата1"
+                        android:text="дата 1"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -106,7 +105,8 @@
                 <LinearLayout
                     android:id="@+id/line2"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
@@ -116,7 +116,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:background="@color/yellow_200_90"
-                        android:paddingLeft="10dp"
+                        android:padding="10dp"
                         android:text="2 событие"
                         android:layout_marginRight="10dp"
                         android:shadowColor="@color/black"
@@ -124,7 +124,7 @@
                         android:shadowDy="5"
                         android:shadowRadius="20"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -148,7 +148,8 @@
                 <LinearLayout
                     android:id="@+id/line3"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
@@ -158,15 +159,15 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:background="@color/yellow_200_90"
-                        android:paddingLeft="10dp"
+                        android:padding="10dp"
                         android:text="3 событие"
                         android:layout_marginRight="10dp"
                         android:shadowColor="@color/black"
                         android:shadowDx="5"
                         android:shadowDy="5"
                         android:shadowRadius="20"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -189,7 +190,8 @@
                 <LinearLayout
                     android:id="@+id/line4"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
@@ -199,15 +201,15 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:background="@color/yellow_200_90"
-                        android:paddingLeft="10dp"
+                        android:padding="10dp"
                         android:text="4 событие"
                         android:layout_marginRight="10dp"
                         android:shadowColor="@color/black"
                         android:shadowDx="5"
                         android:shadowDy="5"
                         android:shadowRadius="20"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
