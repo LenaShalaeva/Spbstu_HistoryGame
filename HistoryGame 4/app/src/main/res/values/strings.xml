@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HistoryGame</string>
+    <string name="game_end">Игра окончена!\n Заработанные очки пойдут в общий зачет!</string>
 </resources>
