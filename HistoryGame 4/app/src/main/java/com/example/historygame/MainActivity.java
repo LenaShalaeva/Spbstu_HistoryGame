@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView textView1 = (TextView) findViewById(R.id.textViewG1);
-
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,12 +60,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView textView2 = (TextView) findViewById(R.id.textViewG2);
-
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     Intent intent = new Intent(MainActivity.this, Games_centuries.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                }
+            }
+        });
+
+        TextView textView3 = (TextView) findViewById(R.id.textViewG3);
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent=new Intent(MainActivity.this,Game_true_false.class);
+                    intent.putExtra("century","");
+                    intent.putExtra("numOfLevels", 2);
+                    intent.putExtra("gameParam",2);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {

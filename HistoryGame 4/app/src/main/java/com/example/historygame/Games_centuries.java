@@ -58,7 +58,9 @@ public class Games_centuries extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Games_centuries.this,Game_personalities.class);
-                    intent.putExtra("century","1");
+                    intent.putExtra("century","");
+                    intent.putExtra("numOfLevels", 2);
+                    intent.putExtra("gameParam",1);
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }
@@ -71,7 +73,9 @@ public class Games_centuries extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Games_centuries.this,Games_chron_order.class);
-                    intent.putExtra("century","1");
+                    intent.putExtra("century","");
+                    intent.putExtra("numOfLevels", 2);
+                    intent.putExtra("gameParam",1);
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }

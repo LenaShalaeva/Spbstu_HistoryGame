@@ -64,7 +64,9 @@ public class Games_themes extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Games_themes.this,Game_true_false.class);
-                    intent.putExtra("century","1");
+                    intent.putExtra("century","WHERE century = '1'");
+                    intent.putExtra("numOfLevels", 2);
+                    intent.putExtra("gameParam",1);
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }
@@ -77,7 +79,9 @@ public class Games_themes extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Games_themes.this,Game_true_false.class);
-                    intent.putExtra("century","2");
+                    intent.putExtra("century","WHERE century = '2'");
+                    intent.putExtra("numOfLevels", 10);
+                    intent.putExtra("gameParam",1);
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }
@@ -90,7 +94,9 @@ public class Games_themes extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Games_themes.this,Game_true_false.class);
-                    intent.putExtra("century","3");
+                    intent.putExtra("century","WHERE century = '3'");
+                    intent.putExtra("numOfLevels", 10);
+                    intent.putExtra("gameParam",1);
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }
@@ -103,7 +109,9 @@ public class Games_themes extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent=new Intent(Games_themes.this,Game_true_false.class);
-                    intent.putExtra("century","4");
+                    intent.putExtra("century","WHERE century = '4'");
+                    intent.putExtra("numOfLevels", 10);
+                    intent.putExtra("gameParam",1);
                     startActivity(intent); finish();
                 }catch(Exception e) {
                 }
