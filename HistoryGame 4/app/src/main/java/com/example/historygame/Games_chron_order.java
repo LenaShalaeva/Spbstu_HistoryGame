@@ -1,6 +1,7 @@
 package com.example.historygame;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -34,8 +36,7 @@ import java.util.Arrays;
 public class Games_chron_order extends AppCompatActivity {
 
 
-//    Array2 array = new Array2();//
-    int N;// = array.check.length; //длина данного массива, т.е. размерность исходных данных
+    int N = 0;// = array.check.length; //длина данного массива, т.е. размерность исходных данных
     Random random = new Random();
     public int count;
     public int clear; //счетчик для обнуления игры, пересборки
@@ -47,13 +48,20 @@ public class Games_chron_order extends AppCompatActivity {
     public int[] controlColor = new int[4]; //массив для событий для контроля блокированности кнопок, когда отвтеили праивльно
     public int[] controlColorD = new int[4]; //массив для дат для контроля блокированности кнопок, когда отвтеили праивльно
     Connection connection;
-    String century ;
+
+    int levelCount = 1;
 
     ArrayList<String> events = new ArrayList<String>();
     ArrayList<String> years = new ArrayList<String>();
     ArrayList<Integer> ids = new ArrayList<Integer>();
 
+    String queryParam;
+    Integer gameParam;
+    Integer numOfLevels;
 
+    Dialog dialog;
+    TextView dialogCloseButton;
+    Button dialogRepeatButton;
 
 
     @Override
@@ -84,13 +92,15 @@ public class Games_chron_order extends AppCompatActivity {
         txtD[3]=txt4D;
 
         Bundle arguments = getIntent().getExtras();
-        century = arguments.get("century").toString();
+        queryParam = arguments.get("century").toString();
+        gameParam = (Integer) arguments.get("gameParam");
+        numOfLevels = (Integer) arguments.get("numOfLevels");
 
         Database db = new Database();
         connection = db.conclass();
         if (db != null) {
             try {
-                String query = "SELECT level_event, event_year FROM chronologyofevents";
+                String query = "SELECT level_event, event_year FROM chronologyofevents" + queryParam;
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
@@ -109,13 +119,60 @@ public class Games_chron_order extends AppCompatActivity {
             }
         }
 
+        //Создаем диалоговое окно и команды для него
+        dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (gameParam == 1) {
+            dialog.setContentView(R.layout.end_game_dialog);
+            dialogCloseButton = (TextView)dialog.findViewById(R.id.button_close);
+            dialogCloseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        Intent intent = new Intent(Games_chron_order.this, Games_centuries.class);
+                        startActivity(intent);
+                        finish();
+                    } catch (Exception e) {
+                    }
+                    dialog.hide();
+                }
+            });
+            dialogRepeatButton = (Button) dialog.findViewById(R.id.repeat_game);
+            dialogRepeatButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    levelCount = 1;
+                    dialog.hide();
+                }
+            });
+        }
+        else {
+            dialog.setContentView(R.layout.super_game_end_dialog);
+            dialogRepeatButton = (Button) dialog.findViewById(R.id.repeat_game);
+            dialogRepeatButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        Intent intent = new Intent(Games_chron_order.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } catch (Exception e) {
+                    }
+                    dialog.hide();
+                }
+            });
+        }
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(false);
+
+
         //Кнопка назад
         Button button_back = (Button) findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(Games_chron_order.this, Games_themes.class);
+                    Intent intent = new Intent(Games_chron_order.this, Games_centuries.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -132,8 +189,6 @@ public class Games_chron_order extends AppCompatActivity {
             int k = random.nextInt(indices.size());//Выбираем число рандомно из массива индексов(от 0 до N)
             number[i]=indices.get(k);//Запоминаем выбранное число в массив number, который для событий
             indices.remove(k); //Убираем это число из массива, чтобы функция Random больше не брала это число
-//            txt[i].setText(array.text[number[i]]); //по числу из number находим текст, соотвествующий этому номеру, для кнопки события
-//            control[i]=array.check[number[i]]; //по числу из number находим индекс контроля для событий, соотвествующий этому номеру
             txt[i].setText(events.get(number[i]));
             control[i] = ids.get(number[i]);
         }
@@ -151,8 +206,6 @@ public class Games_chron_order extends AppCompatActivity {
             int k = random.nextInt(indicesD.size());
             numberD[i] = items.get(indicesD.get(k));
             indicesD.remove(k);
-//            txtD[i].setText(array.data[numberD[i]]);
-//            controlD[i]=array.check[numberD[i]];
             txtD[i].setText(years.get(numberD[i]));
             controlD[i] = ids.get(numberD[i]);
         }
@@ -201,7 +254,9 @@ public class Games_chron_order extends AppCompatActivity {
 
                                             clear=clear+1;//В счетчик правильных ответов добавляем 1
                                             if (clear==4){//Проверка, если даны 4 из 4 правильных ответа, т.е. надо обновлять игру
-
+                                                if (levelCount == numOfLevels) {
+                                                        dialog.show();
+                                                }
                                                 txt[0].setEnabled(true);//Делаем все кнопки событий снова кликабельными
                                                 txt[1].setEnabled(true);
                                                 txt[2].setEnabled(true);
@@ -228,8 +283,6 @@ public class Games_chron_order extends AppCompatActivity {
                                                     control[i] = ids.get(number[i]);
                                                 }
 
-
-
                                                 items.add(number[0]);
                                                 items.add(number[1]);
                                                 items.add(number[2]);
@@ -250,6 +303,7 @@ public class Games_chron_order extends AppCompatActivity {
                                                     controlD[i] = ids.get(numberD[i]);
                                                 }
                                                 clear=0;//Ну и обнуляем счетчик праивльных ответов
+                                                levelCount++;
                                             }
                                         }else{//Если индекс контроля событий и индекс контроля даты не равны, т.е. событие не соотвествует дате
                                             txt[0].setBackgroundColor((getResources().getColor(R.color.red)));//Красим в красный
@@ -304,6 +358,9 @@ public class Games_chron_order extends AppCompatActivity {
                                             }
                                             clear=clear+1;
                                             if (clear==4){
+                                                if (levelCount == numOfLevels) {
+                                                        dialog.show();
+                                                }
                                                 txt[0].setEnabled(true);
                                                 txt[1].setEnabled(true);
                                                 txt[2].setEnabled(true);
@@ -351,6 +408,7 @@ public class Games_chron_order extends AppCompatActivity {
                                                     controlD[i] = ids.get(numberD[i]);
                                                 }
                                                 clear=0;
+                                                levelCount++;
                                             }
                                         }else{
                                             txt[1].setBackgroundColor((getResources().getColor(R.color.red)));
@@ -404,6 +462,9 @@ public class Games_chron_order extends AppCompatActivity {
                                             }
                                             clear=clear+1;
                                             if (clear==4){
+                                                if (levelCount == numOfLevels) {
+                                                        dialog.show();
+                                                }
                                                 txt[0].setEnabled(true);
                                                 txt[1].setEnabled(true);
                                                 txt[2].setEnabled(true);
@@ -449,6 +510,7 @@ public class Games_chron_order extends AppCompatActivity {
                                                     controlD[i] = ids.get(numberD[i]);
                                                 }
                                                 clear=0;
+                                                levelCount++;
                                             }
                                         }else{
                                             txt[2].setBackgroundColor((getResources().getColor(R.color.red)));
@@ -501,6 +563,9 @@ public class Games_chron_order extends AppCompatActivity {
                                             }
                                             clear=clear+1;
                                             if (clear==4){
+                                                if (levelCount == numOfLevels) {
+                                                        dialog.show();
+                                                }
                                                 txt[0].setEnabled(true);
                                                 txt[1].setEnabled(true);
                                                 txt[2].setEnabled(true);
@@ -511,7 +576,6 @@ public class Games_chron_order extends AppCompatActivity {
                                                     txt[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                     txtD[i].setBackgroundColor((getResources().getColor(R.color.yellow_200_90)));
                                                 }
-
                                                 ArrayList<Integer> indices = new ArrayList<>();
                                                 for (int i = 0; i < N; ++i) {
                                                     indices.add(i);}
@@ -545,6 +609,7 @@ public class Games_chron_order extends AppCompatActivity {
                                                     controlD[i] = ids.get(numberD[i]);
                                                 }
                                                 clear=0;
+                                                levelCount++;
                                             }
                                         }else{
                                             txt[3].setBackgroundColor((getResources().getColor(R.color.red)));

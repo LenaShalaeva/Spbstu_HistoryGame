@@ -1,29 +1,110 @@
 package com.example.historygame;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
 
 
 public class Game_personalities extends AppCompatActivity {
+    int N = 0;
     public int num;
     public int control;//объявляется перменная, которая будет соответсовать событию и сверяться с датами
-    Array3 array = new Array3();//объявляется массив?????
     Random random = new Random();
     public int[] controlDates = new int[4];
+    int levelCount = 1;
+    Connection connection;
+
+    ArrayList<String> persons = new ArrayList<String>();
+    ArrayList<String> years = new ArrayList<String>();
+    ArrayList<Integer> ids = new ArrayList<Integer>();
+
+    String queryParam;
+    Integer gameParam;
+    Integer numOfLevels;
+
+    Dialog dialog;
+    TextView dialogCloseButton;
+    Button dialogRepeatButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personalities);
+
+        Bundle arguments = getIntent().getExtras();
+        queryParam = arguments.get("century").toString();
+        gameParam = (Integer) arguments.get("gameParam");
+        numOfLevels = (Integer) arguments.get("numOfLevels");
+
+
+        Database db = new Database();
+        connection = db.conclass();
+        if (db != null) {
+            try {
+                String query = "SELECT person_name, birth_year, death_year FROM periodoflive " + queryParam;
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    String person;
+                    String birth, death;
+                    person = resultSet.getString("person_name");
+                    birth = resultSet.getString("birth_year");
+                    death = resultSet.getString("death_year");
+                    persons.add(person);
+                    years.add(birth +" - "+ death);
+                    ids.add(N);
+                    N++;
+                }
+                connection.close();
+            } catch (Exception e) {
+                Log.e("Error: ", e.getMessage());
+            }
+        }
+
+        //Создаем диалоговое окно и команды для него
+        dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.end_game_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(false);
+        dialogCloseButton = (TextView)dialog.findViewById(R.id.button_close);
+        dialogCloseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(Game_personalities.this, Games_centuries.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                }
+                dialog.hide();
+            }
+        });
+        dialogRepeatButton = (Button) dialog.findViewById(R.id.repeat_game);
+        dialogRepeatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                levelCount = 1;
+                dialog.hide();
+            }
+        });
+
 
         final TextView txt= findViewById(R.id.task);
         final Button date1 = findViewById(R.id.button_date1);
@@ -57,20 +138,23 @@ public class Game_personalities extends AppCompatActivity {
         ArrayList<Integer> indices = new ArrayList<>();
         ArrayList<Integer> items = new ArrayList<>();
 
-        for (int i = 0; i < 6; i++) {items.add(i);}
+        for (int i = 0; i < ids.size(); i++) {items.add(i);}
 
         for (int i = 0; i < 4; i++) {
             num = random.nextInt(items.size());
             int num2=items.get(num);
-            controlDates[i] = array.check[num2];
+            controlDates[i] = ids.get(num2);
             indices.add(num2);
             items.remove(num);
-            dates[i].setText(array.data[num2]);
+            dates[i].setText(years.get(num2));
         }
         int k = random.nextInt(indices.size());
         int number = indices.get(k);
-        txt.setText(array.text[number]);
-        control=array.check[number];
+        txt.setText(persons.get(number));
+        control=ids.get(number);
+        persons.remove(number);
+        ids.remove(number);
+
 
         for(int i = 0; i < 4; i++){
             int work=i;
@@ -92,28 +176,47 @@ public class Game_personalities extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-
+                                if (levelCount == numOfLevels) {
+                                    if (gameParam == 1) {
+                                        dialog.show();
+                                    }
+                                    else {
+                                        try {
+                                            Intent intent = new Intent(Game_personalities.this, Games_chron_order.class);
+                                            intent.putExtra("century", queryParam);
+                                            intent.putExtra("numOfLevels", 2);
+                                            intent.putExtra("gameParam",2);
+                                            startActivity(intent);
+                                            finish();
+                                        } catch (Exception e) {
+                                        }
+                                        return;
+                                    }
+                                }
                                 ArrayList<Integer> indices = new ArrayList<>();
                                 ArrayList<Integer> items = new ArrayList<>();
 
-                                for (int i = 0; i < 6; i++) {items.add(i);}
+                                for (int i = 0; i < ids.size(); i++) {items.add(i);}
 
                                 for (int i = 0; i < 4; i++) {
-                                    num = random.nextInt(items.size());
+                                    num = random.nextInt(ids.size());
                                     int num2=items.get(num);
-                                    controlDates[i] = array.check[num2];
+                                    controlDates[i] = ids.get(num2);
                                     indices.add(num2);
                                     items.remove(num);
-                                    dates[i].setText(array.data[num2]);
+                                    dates[i].setText(years.get(num2));
                                 }
                                 int k = random.nextInt(indices.size());
                                 int number = indices.get(k);
-                                txt.setText(array.text[number]);
-                                control=array.check[number];
+                                txt.setText(persons.get(number));
+                                control=ids.get(number);
+                                persons.remove(number);
+                                ids.remove(number);
                                 for(int j=0; j < 4; j++){
                                     dates[j].setEnabled(true);
                                 }
                                 dates[work].setBackgroundColor((getResources().getColor(R.color.yellow_500)));
+                                levelCount++;
                             }
                         }, 500);
                     }
