@@ -5,83 +5,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button_back"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Назад"
-        android:textAllCaps="false" />
-
     <LinearLayout
-        android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:background="@drawable/ornament"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Назад"
+            android:textAllCaps="false" />
+
         <LinearLayout
-            android:id="@+id/container2"
+            android:id="@+id/container1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/yellow_500"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/task"
+            <LinearLayout
+                android:id="@+id/container2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="40dp"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="24sp"
-                android:textColor="@color/white"
-                android:textStyle="normal" />
-        </LinearLayout>
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="4"
+                android:background="@color/yellow_500"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"></LinearLayout>
+                <TextView
+                    android:id="@+id/task"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00FFFFFF"
+                    android:gravity="center"
+                    android:padding="40dp"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/container3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"></LinearLayout>
 
-            <Button
-                android:id="@+id/button_believe"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/container3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:text="Верю"
-                android:textSize="18sp"
-                android:textAllCaps="false" />
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button_not_believe"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:text="Не Верю"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"
-                android:textAllCaps="false" />
+                <Button
+                    android:id="@+id/button_believe"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Верю"
+                    android:textAllCaps="false"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button_not_believe"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Не Верю"
+                    android:textAllCaps="false"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
     </LinearLayout>
-
 
 </RelativeLayout>
