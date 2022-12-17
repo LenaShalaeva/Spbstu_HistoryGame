@@ -47,13 +47,13 @@ public class Games_chron_order extends AppCompatActivity {
     public int[] controlD = new int[4];//массив индексов даты для контроля соответствия события и даты
     public int[] controlColor = new int[4]; //массив для событий для контроля блокированности кнопок, когда отвтеили праивльно
     public int[] controlColorD = new int[4]; //массив для дат для контроля блокированности кнопок, когда отвтеили праивльно
-    Connection connection;
 
-    int levelCount = 1;
+    Connection connection;
 
     ArrayList<String> events = new ArrayList<String>();
     ArrayList<String> years = new ArrayList<String>();
     ArrayList<Integer> ids = new ArrayList<Integer>();
+    int levelCount = 1;
 
     String queryParam;
     Integer gameParam;

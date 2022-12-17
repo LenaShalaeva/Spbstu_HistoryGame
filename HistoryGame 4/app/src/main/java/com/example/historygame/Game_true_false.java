@@ -29,13 +29,14 @@ public class Game_true_false extends AppCompatActivity {
 
     int num;//объявляется переменная, которая рандомом будет генерирвоаться и от неё будут и текст события и правдивость события
     public Boolean control;//объявляется перменная, которая будет сверяться с правдивость события
-    Random random = new Random();
     public int count; //счетчик правильных ответов
-    int levelCount = 1;
+    Random random = new Random();
+
     Connection connection;
 
     ArrayList<String> events = new ArrayList<String>();
     ArrayList<Boolean> answers = new ArrayList<Boolean>();
+    int levelCount = 1;
 
     String queryParam;
     Integer gameParam;
@@ -44,7 +45,6 @@ public class Game_true_false extends AppCompatActivity {
     Dialog dialog;
     TextView dialogCloseButton;
     Button dialogRepeatButton;
-
 
 
     @SuppressLint("ClickableViewAccessibility")

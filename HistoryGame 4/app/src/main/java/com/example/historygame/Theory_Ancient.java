@@ -93,10 +93,20 @@ public class Theory_Ancient extends AppCompatActivity {
         button_forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num++;
-                scroll.scrollTo(0,0);
-                header.setText(headers.get(num));
-                theory.setText(texts.get(num));
+                if (num == headers.size()){
+                    try {
+                        Intent intent = new Intent(Theory_Ancient.this, Theory.class);
+                        startActivity(intent);
+                        finish();
+                    } catch (Exception e) {
+                    }
+                }
+                else {
+                    num++;
+                    scroll.scrollTo(0, 0);
+                    header.setText(headers.get(num));
+                    theory.setText(texts.get(num));
+                }
             }
         });
     }

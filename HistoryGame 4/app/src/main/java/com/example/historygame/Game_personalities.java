@@ -26,14 +26,15 @@ public class Game_personalities extends AppCompatActivity {
     int N = 0;
     public int num;
     public int control;//объявляется перменная, которая будет соответсовать событию и сверяться с датами
-    Random random = new Random();
     public int[] controlDates = new int[4];
-    int levelCount = 1;
+    Random random = new Random();
+
     Connection connection;
 
     ArrayList<String> persons = new ArrayList<String>();
     ArrayList<String> years = new ArrayList<String>();
     ArrayList<Integer> ids = new ArrayList<Integer>();
+    int levelCount = 1;
 
     String queryParam;
     Integer gameParam;
@@ -43,6 +44,7 @@ public class Game_personalities extends AppCompatActivity {
     TextView dialogCloseButton;
     Button dialogRepeatButton;
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personalities);
@@ -51,7 +53,6 @@ public class Game_personalities extends AppCompatActivity {
         queryParam = arguments.get("century").toString();
         gameParam = (Integer) arguments.get("gameParam");
         numOfLevels = (Integer) arguments.get("numOfLevels");
-
 
         Database db = new Database();
         connection = db.conclass();
@@ -105,14 +106,11 @@ public class Game_personalities extends AppCompatActivity {
             }
         });
 
-
         final TextView txt= findViewById(R.id.task);
         final Button date1 = findViewById(R.id.button_date1);
         final Button date2 = findViewById(R.id.button_date2);
         final Button date3 = findViewById(R.id.button_date3);
         final Button date4 = findViewById(R.id.button_date4);
-
-
 
         Button[] dates = new Button[4];
         dates[0]=date1;
@@ -154,7 +152,6 @@ public class Game_personalities extends AppCompatActivity {
         control=ids.get(number);
         persons.remove(number);
         ids.remove(number);
-
 
         for(int i = 0; i < 4; i++){
             int work=i;
@@ -225,6 +222,7 @@ public class Game_personalities extends AppCompatActivity {
             });
         }
     }
+
     //Код системной кнопки назад -начало
     @Override
     public void onBackPressed(){

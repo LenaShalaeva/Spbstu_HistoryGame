@@ -13,13 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// ЭТО ЭКРАН ПО ТЕМАМ, НЕ ПО ЭПОХАМ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 public class Games_centuries extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 

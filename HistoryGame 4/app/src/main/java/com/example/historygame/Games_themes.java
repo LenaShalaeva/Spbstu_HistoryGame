@@ -15,7 +15,6 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Games_themes extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    String selectedCentury = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
