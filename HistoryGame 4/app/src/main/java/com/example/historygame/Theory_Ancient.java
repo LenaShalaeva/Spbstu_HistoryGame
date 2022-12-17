@@ -32,7 +32,7 @@ public class Theory_Ancient extends AppCompatActivity {
     String century;
     ArrayList<String> headers = new ArrayList<String>();
     ArrayList<String> texts = new ArrayList<String>();
-    int num = 1;
+    int num = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class Theory_Ancient extends AppCompatActivity {
         scroll = (ScrollView) findViewById(R.id.scroll_view);
 
         Database db = new Database();
-        centuryHeader.setText(centuryName);
         Connection connection = db.conclass();
         try {
             Statement statement = connection.createStatement();
@@ -73,7 +72,7 @@ public class Theory_Ancient extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (num == 1){
+                if (num == 0){
                     try {
                     Intent intent = new Intent(Theory_Ancient.this, Theory.class);
                     startActivity(intent);
@@ -100,37 +99,6 @@ public class Theory_Ancient extends AppCompatActivity {
                 theory.setText(texts.get(num));
             }
         });
-    }
-
-    class Task extends AsyncTask<Void, Void, Void> {
-        String headerText, theoryText;
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Database db = new Database();
-            Connection connection = db.conclass();
-            int n = 0;
-            try {
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT header, theory_text FROM theory_table WHERE century ='" + century + "'");
-                while (resultSet.next() && n < num) {
-                    headerText = resultSet.getString("header");
-                    theoryText = resultSet.getString("theory_text");
-                    headers.add(headerText);
-                }
-            } catch (Exception e) {
-                Log.e("Error: ", e.getMessage());
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void unused) {
-            header.setText(headerText);
-            theory.setText(theoryText);
-            centuryHeader.setText(centuryName);
-            super.onPostExecute(unused);
-        }
     }
 
     @Override
